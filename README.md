@@ -48,11 +48,11 @@ A handbook for students at [The University of Texas at San Antonio][utsa], with 
 
 The UTSA Handbook is intended to be a living document filled with perspectives, opinions and information gathered from numerous students, old and young, incoming and graduated.
 
-- Please consider contributing where
+If you have something to add, please consider contributing! The process is easier than you think, and is an easy way to participate in open source and contribute to the UTSA CS community.
 
 ## Setup
 
-This setup guide is very simple and does not cover
+This setup guide is very simple and does not cover the full process of installation. Expansion will occur in the future.
 
 ```bash
 git clone https://github.com/Xevion/utsa-handbook.git
@@ -60,6 +60,11 @@ pnpm install
 pnpm dev
 pnpm build
 ```
+
+## Notes
+
+- All content frontmatter obeys [this](https://github.com/withastro/astro/blob/main/packages/astro-rss/src/schema.ts) schema (for [@astrojs/rss](https://docs.astro.build/en/guides/rss/)).
+- Document your changes in [CHANGELOG.md][changelog]. Not required for minor frontmatter changes, but recommended for all other changes.
 
 ### Disclaimer
 
