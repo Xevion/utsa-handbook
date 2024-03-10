@@ -16,6 +16,7 @@ export default function ThemeToggle() {
 
   return (
     <button
+    className="text-2xl mt-0.5 mr-1.5"
       onClick={() => {
         setTheme(themeState === "light" ? "dark" : "light");
       }}
