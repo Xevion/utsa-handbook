@@ -11,7 +11,7 @@ const getLinkClasses = (link: Link) => {
 
 	return clsx(baseClasses, {
 		// Classes for when the link is not the current page
-		"dark:border-l-zinc-600 text-zinc-500 dark:text-zinc-400": !isCurrent,
+		"dark:border-l-zinc-600 text-zinc-500 dark:hover:text-zinc-300 dark:text-zinc-400": !isCurrent,
 		// Classes for when the link is the current page
 		"dark:border-l-zinc-500 text-zinc-900 dark:text-zinc-200": isCurrent,
 	});
@@ -23,7 +23,7 @@ const sidebar = await get();
 	<nav aria-labelledby="grid-left" class="w-64 p-4 border-r dark:border-r-zinc-500">
 		<ul>
 			{sidebar.map(item => (item.header ? 
-				<h2 class="mt-4 font-semibold text-slate-700 dark:text-slate-200">{item.text}</h2> : 
+				<h2 class="mt-4 font-semibold text-zinc-700 dark:text-zinc-300">{item.text}</h2> : 
 				<li class={getLinkClasses(item)}>
 					<a href={item.link}>{item.text}</a>
 				</li>))}
@@ -32,7 +32,7 @@ const sidebar = await get();
 </aside>
 
 <script is:inline>
-	window.addEventListener('DOMContentLoaded', (event) => {
+	window.addEventListener('DOMContentLoaded', () => {
 		var target = document.querySelector('[aria-current="page"]');
 		if (target && target.offsetTop > window.innerHeight - 100) {
 			document.querySelector('.nav-groups').scrollTop = target.offsetTop;

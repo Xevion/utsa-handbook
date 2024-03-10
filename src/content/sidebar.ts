@@ -1,4 +1,4 @@
-import { getCollection, getEntries, type CollectionEntry } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 
 export type Link = {
   text: string;
@@ -22,7 +22,7 @@ const headerOrder: Record<string, number> = {
  */
 function toTitleCase(s: string): string {
   return s.replace(/\w\S*/g, function (txt) {
-    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    return txt.charAt(0).toUpperCase() + txt.substring(1).toLowerCase();
   });
 }
 
