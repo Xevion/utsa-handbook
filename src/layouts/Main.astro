@@ -17,13 +17,13 @@ const currentPage = new URL(Astro.request.url).pathname;
 			main {
 				width: calc(100% - 2em);
 			}
-			.prose {
+			/* .prose {
 				width: 720px;
 				max-width: calc(100% - 2em);
 				margin: auto;
 				padding: 1em;
 				color: rgb(var(--gray-dark));
-			}
+			} */
 		</style>
 	</head>
 	<body class="dark:bg-zinc-800 dark:text-zinc-200">
@@ -34,8 +34,9 @@ const currentPage = new URL(Astro.request.url).pathname;
 					<Sidebar currentPage={currentPage} />
 				</div>
 			</div>
-			<main class="py-4 px-8 pb-32 col-span-6  overflow-auto">
-				<div>
+			<main class="py-4 px-8 pb-32 col-span-6 overflow-auto">
+				<h2 class="text-2xl font-semibold mb-2">{title}</h2>
+				<div class="prose xl:prose-lg prose-zinc dark:prose-invert">
 					<slot />
 					<!-- <PageContent content={content}>
 					</PageContent> -->
