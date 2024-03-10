@@ -1,38 +1,24 @@
 ---
-import childProcess from "child_process";
-const hash = childProcess
-  .execSync("git rev-parse --short HEAD")
-  .toString()
-  .trim();
+import { GITHUB_URL } from "@/consts";
+import { exec } from "child_process";
+import { promisify } from "util";
+
+const execAsync = promisify(exec);
+const [shortHash, longHash] = (
+  await Promise.all([
+    execAsync("git rev-parse --short HEAD"),
+    execAsync("git rev-parse HEAD"),
+  ])
+).map(({ stdout }) => stdout.trim());
 
 import { version } from "@/../package.json";
 ---
 
-<footer>
+<footer class="dark:text-zinc-400 pt-8 px-4 pb-24 text-center">
   <p>
-    <a href="https://github.com/Xevion/utsa-handbook" target="_blank"
-      >Handbook</a
-    > v{version} ({hash})
+    <a href={GITHUB_URL} target="_blank">Handbook</a> v{version}
+    <a href={`${GITHUB_URL}/commit/${longHash}`} target="_blank"
+      >({shortHash})</a
+    >
   </p>
 </footer>
-<style>
-  footer {
-    padding: 2em 1em 6em 1em;
-    background: linear-gradient(var(--gray-gradient)) no-repeat;
-    color: rgb(var(--gray));
-    text-align: center;
-  }
-  .social-links {
-    display: flex;
-    justify-content: center;
-    gap: 1em;
-    margin-top: 1em;
-  }
-  .social-links a {
-    text-decoration: none;
-    color: rgb(var(--gray));
-  }
-  .social-links a:hover {
-    color: rgb(var(--gray-dark));
-  }
-</style>
