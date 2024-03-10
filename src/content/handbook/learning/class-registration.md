@@ -3,7 +3,6 @@ title: 'Class Registration'
 description: 'A general synopsis of the class registration process at UTSA, as well as tips on how to get the classes you want.'
 pubDate: '2024-03-09'
 authors: ['xevion']
-heroImage: '/blog-placeholder-3.jpg'
 ---
 Class registration at UTSA (University of Texas at San Antonio) is a crucial and exciting time for students as they plan their academic journey for the upcoming semester. The process is primarily conducted online through the university's student portal, known as ASAP (Academic Student Achievement Portal).
 

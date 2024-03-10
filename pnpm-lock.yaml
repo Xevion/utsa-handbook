@@ -35,6 +35,9 @@ dependencies:
   astro:
     specifier: ^4.4.15
     version: 4.4.15(@types/node@20.11.25)(sass@1.71.1)(typescript@5.4.2)
+  clsx:
+    specifier: ^2.1.0
+    version: 2.1.0
   dayjs:
     specifier: ^1.11.10
     version: 1.11.10

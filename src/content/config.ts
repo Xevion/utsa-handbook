@@ -9,7 +9,6 @@ const handbook = defineCollection({
 		// Transform string to Date object
 		pubDate: z.coerce.date(),
 		lastModified: z.coerce.date().optional(),
-		heroImage: z.string().optional(),
 	}),
 });
 

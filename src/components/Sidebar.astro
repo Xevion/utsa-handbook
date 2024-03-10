@@ -1,0 +1,45 @@
+---
+import get from '@/content/sidebar';
+import clsx from 'clsx';
+const { currentPage } = Astro.props;
+const currentPageMatch = currentPage.slice(1);
+
+const isCurrentPage = (item): boolean => {
+	if (item.link) {
+		return item.link.includes(currentPageMatch);
+	}
+	return false;
+};
+
+const getLinkClasses = (link) => {
+	const baseClasses = "block py-2 px-6 my-1 transition-colors border-l dark:border-l-zinc-600 hover:border-zinc-400 hover:text-slate-900"
+	const isCurrent = isCurrentPage(link);
+
+	return clsx(baseClasses, {
+		"border-slate-500 text-slate-900": isCurrent,
+		"dark:text-slate-200 text-slate-500": !isCurrent,
+	});
+}
+
+const sidebar = await get();
+---
+<aside title="Site Navigation">
+	<nav aria-labelledby="grid-left" class="w-64 p-4 border-r dark:border-r-zinc-500">
+		<ul>
+			{sidebar.map(item => (item.header ? 
+				<h2 class="mt-4 font-semibold text-slate-700 dark:text-slate-200">{item.text}</h2> : 
+				<li class={getLinkClasses(item)}>
+					<a href={item.link}>{item.text}</a>
+				</li>))}
+		</ul>
+	</nav>
+</aside>
+
+<script is:inline>
+	window.addEventListener('DOMContentLoaded', (event) => {
+		var target = document.querySelector('[aria-current="page"]');
+		if (target && target.offsetTop > window.innerHeight - 100) {
+			document.querySelector('.nav-groups').scrollTop = target.offsetTop;
+		}
+	});
+</script>
