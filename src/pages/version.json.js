@@ -9,7 +9,7 @@ const hash = childProcess
 // obtain release version
 import { version } from "@/../package.json";
  
-export async function GET({ params, request }) {
+export async function GET() {
   const versionMetadata = {
     hash,
     version,
