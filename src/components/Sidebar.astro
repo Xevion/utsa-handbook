@@ -1,5 +1,5 @@
 ---
-import get from '@/content/sidebar';
+import get, {Link} from '@/content/sidebar';
 import clsx from 'clsx';
 const { currentPage } = Astro.props;
 const currentPageMatch = currentPage.slice(1);
@@ -11,7 +11,7 @@ const isCurrentPage = (item): boolean => {
 	return false;
 };
 
-const getLinkClasses = (link) => {
+const getLinkClasses = (link: Link) => {
 	const baseClasses = "block py-2 px-6 my-1 transition-colors border-l hover:border-zinc-400 hover:text-slate-900"
 	const isCurrent = isCurrentPage(link);
 
