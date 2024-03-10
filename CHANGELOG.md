@@ -1,3 +1,8 @@
+# 0.0.3
+
+- Continued dark mode work
+- Added sidebar with content collection query for dynamic navigation
+
 # 0.0.2
 
 - Added version/commit hash to the footer

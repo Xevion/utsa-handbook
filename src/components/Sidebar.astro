@@ -12,12 +12,14 @@ const isCurrentPage = (item): boolean => {
 };
 
 const getLinkClasses = (link) => {
-	const baseClasses = "block py-2 px-6 my-1 transition-colors border-l dark:border-l-zinc-600 hover:border-zinc-400 hover:text-slate-900"
+	const baseClasses = "block py-2 px-6 my-1 transition-colors border-l hover:border-zinc-400 hover:text-slate-900"
 	const isCurrent = isCurrentPage(link);
 
 	return clsx(baseClasses, {
-		"border-slate-500 text-slate-900": isCurrent,
-		"dark:text-slate-200 text-slate-500": !isCurrent,
+		// Classes for when the link is not the current page
+		"dark:border-l-zinc-600 text-zinc-500 dark:text-zinc-400": !isCurrent,
+		// Classes for when the link is the current page
+		"dark:border-l-zinc-500 text-zinc-900 dark:text-zinc-200": isCurrent,
 	});
 }
 

@@ -1,4 +1,4 @@
-import { getCollection, getEntries } from 'astro:content';
+import { getCollection, getEntries, type CollectionEntry } from 'astro:content';
 
 
 export type Link = {
@@ -7,37 +7,65 @@ export type Link = {
   header?: boolean;
 };
 
+const headerOrder: Record<string, number> = {
+  root: 0,
+  learning: 1,
+  living: 2,
+  improving: 3,
+  default: 999
+}
+
+function toTitleCase(s: string): string {
+  return s.replace(
+    /\w\S*/g,
+    function(txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    }
+  );
+}
+
 /**
  * Queries the content collection to build the sidebar dynamically
  * @returns {Link[]} - An array of links to be used in the sidebar
  */
-const get = async (): Link[] => {
+const get = async (): Promise<Link[]> => {
   const entries = await getCollection('handbook');
-  return entries.map((entry) => {
-    return {
-      text: entry.data.title,
-      link: `/handbook/${entry.slug}`,
-      header: entry.slug.endsWith('index.md') || entry.data.header,
-    };
+  const entriesByHeader: Record<string, CollectionEntry<'handbook'>[]> = {};
+
+  entries.forEach((entry) => {
+    // Acquire the header using the first part of the slug (otherwise, use 'root' as the header)
+    const header = entry.slug.indexOf('/') !== -1 ? entry.slug.split('/')[0] : 'root';
+    
+    if (entriesByHeader[header])
+      entriesByHeader[header].push(entry);
+    else 
+      entriesByHeader[header] = [entry];
   });
 
-  // Fake data
-  return [
-    { text: "Core", header: true },
-    { text: "Introduction", link: "/core/introduction" },
-    { text: "Colors", link: "/core/colors" },
-    { text: "Typography", link: "/core/typography" },
-    { text: "Shadows", link: "/core/shadows" },
+  // Begin building the links array (root level first, then the rest of the entries)
+  const links: Link[] = entriesByHeader.root.map((entry) => ({
+    text: entry.data.title,
+    link: `/handbook/${entry.slug}`,
+  }));
 
-    { text: "Components", header: true },
-    { text: "Buttons", link: "/components/buttons" },
-    { text: "Input", link: "/components/input" },
-    { text: "Status pills", link: "/components/status-pill" },
-    { text: "Table", link: "/components/table" },
+  delete entriesByHeader.root;
 
-    { text: "Patterns", header: true },
-    { text: "Introduction", link: "/patterns/introduction" },
-  ];
+  const sortedHeaders = Object.keys(entriesByHeader).sort((a, b) => {
+    return (headerOrder[a] || headerOrder.default) - (headerOrder[b] || headerOrder.default);
+  });
+
+  sortedHeaders.forEach((header) => {
+    links.push({ text: toTitleCase(header), header: true });
+    entriesByHeader[header].forEach((entry) => {
+      links.push({
+        text: entry.data.title,
+        link: `/handbook/${entry.slug}`,
+      });
+    });
+  });
+
+  
+  return links;
 };
 
 export default get;
