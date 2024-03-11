@@ -19,11 +19,11 @@ const getLinkClasses = (link: Link) => {
 
 const sidebar = await get();
 ---
-<aside title="Site Navigation">
-	<nav aria-labelledby="grid-left" class="w-64 p-4 border-r dark:border-r-zinc-500">
+<aside title="Site Navigation" class="h-full">
+	<nav aria-labelledby="grid-left" class="h-full w-64 p-4 border-r dark:border-r-zinc-500">
 		<ul>
 			{sidebar.map(item => (item.header ? 
-				<h2 class="mt-4 font-semibold text-zinc-700 dark:text-zinc-300">{item.text}</h2> : 
+				<h2 class="text-lg mt-4 font-semibold text-zinc-700 dark:text-zinc-300">{item.text}</h2> : 
 				<li class={getLinkClasses(item)}>
 					<a href={item.link}>{item.text}</a>
 				</li>))}

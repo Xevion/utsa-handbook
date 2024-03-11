@@ -47,7 +47,7 @@ const get = async (): Promise<Link[]> => {
   // Begin building the links array (root level first, then the rest of the entries)
   const links: Link[] = entriesByHeader.root.map((entry) => ({
     text: entry.data.title,
-    link: `/handbook/${entry.slug}`,
+    link: `/${entry.slug}`,
   }));
 
   // Remove the root level
@@ -67,7 +67,7 @@ const get = async (): Promise<Link[]> => {
     entriesByHeader[header].forEach((entry) => {
       links.push({
         text: entry.data.title,
-        link: `/handbook/${entry.slug}`,
+        link: `/${entry.slug}`,
       });
     });
   });

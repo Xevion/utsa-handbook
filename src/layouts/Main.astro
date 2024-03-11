@@ -1,51 +1,45 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import BaseHead from '@components/BaseHead.astro';
-import Header from '@components/Header.astro';
-import Footer from '@components/Footer.astro';
-import Sidebar from '@components/Sidebar.astro';
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "@components/BaseHead.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import Sidebar from "@components/Sidebar.astro";
+import TableOfContents from "@components/TableOfContents.astro";
 
-type Props = CollectionEntry<'handbook'>['data'];
+type Props = CollectionEntry<"handbook">["data"];
 
-const { title, description, pubDate, lastModified } = Astro.props;
+const { title, description, pubDate, lastModified, headers } = Astro.props;
 const currentPage = new URL(Astro.request.url).pathname;
 ---
+
 <html lang="en">
-	<head>
-		<BaseHead title={title} description={description} />
-		<style>
-			main {
-				width: calc(100% - 2em);
-			}
-			/* .prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 1em;
-				color: rgb(var(--gray-dark));
-			} */
-		</style>
-	</head>
-	<body class="dark:bg-zinc-800 dark:text-zinc-200">
-		<Header currentPage={currentPage} />
-		<div class="grid grid-cols-12">
-			<div class="col-span-3 sticky top-0 pt-12 h-screen flex">
-				<div class="ml-auto">
-					<Sidebar currentPage={currentPage} />
-				</div>
-			</div>
-			<main class="py-4 px-8 pb-32 col-span-6 overflow-auto">
-				<h2 class="text-2xl font-semibold mb-2">{title}</h2>
-				<div class="prose xl:prose-lg prose-zinc dark:prose-invert">
-					<slot />
-					<!-- <PageContent content={content}>
-					</PageContent> -->
-				</div>
-			</main>
-			<!-- <div class="col-span-3 sticky top-0 h-screen flex">
-				<RightSidebar content={content} />
-			</div> -->
-		</div>
-		<Footer />
-	</body>
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body class="dark:bg-zinc-800 dark:text-zinc-200">
+    <Header currentPage={currentPage} />
+    <div class="grid grid-cols-12 pt-12">
+      <div class="col-span-3 sticky top-0 h-screen flex">
+        <div class="ml-auto h-full">
+          <Sidebar currentPage={currentPage} />
+        </div>
+      </div>
+      <div class="col-span-1"></div>
+      <main class="py-4 px-8 pb-32 col-span-6 overflow-auto">
+        <slot />
+      </main>
+      {
+        headers && headers.length > 0 && (
+          <div class="col-span-3 sticky top-0 h-screen flex">
+            <nav aria-labelledby="grid-right">
+              <div class="px-8">
+                <TableOfContents headers={headers} />
+              </div>
+            </nav>
+          </div>
+        )
+      }
+    </div>
+    <Footer />
+  </body>
 </html>

@@ -1,15 +1,13 @@
 ---
 import BaseHead from '@components/BaseHead.astro';
 import Header from '@components/Header.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
----
+import { SITE_TITLE, SITE_DESCRIPTION } from '@/consts';
+import { getCollection } from 'astro:content';
+import Main from '@layouts/Main.astro';
+import FormattedDate from '@components/FormattedDate.astro';
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body class="dark:text-zinc-200 dark:bg-zinc-800">
-		<Header />
-	</body>
-</html>
+const posts = (await getCollection('handbook')).sort(
+	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+);
+---
+<Main>asd</Main>

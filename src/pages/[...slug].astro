@@ -1,0 +1,31 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content';
+import Main from '@layouts/Main.astro';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('handbook')
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: post,
+	}));
+}
+type Props = CollectionEntry<'handbook'>;
+
+const isProd = import.meta.env.PROD;
+const {render, data} = Astro.props;
+const {title, lastModified} = data;
+const { Content } = await render();
+---
+
+<Main {...data}>
+	<h2 class="text-2xl font-semibold mb-2">{title}</h2>
+		<!-- lastModified can be undefined in some rare circumstances (usually development only), this might fail in production if something went wrong. -->
+		<span>{(lastModified ?? (isProd ? null : new Date()))!.toLocaleDateString('en-us', {
+			year: 'numeric',
+			month: 'short',
+			day: 'numeric',
+		})}</span>
+        <div class="prose xl:prose-lg prose-zinc dark:prose-invert">
+			<Content />
+        </div>
+</Main>
