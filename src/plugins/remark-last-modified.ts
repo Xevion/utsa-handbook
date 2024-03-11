@@ -7,12 +7,14 @@ export const remarkModifiedTime: RemarkPlugins[number] = () => {
     const command = `git log -1 --pretty="format:%cI" "${filepath}"`;
     let result = execSync(command).toString().trim();
 
+    
     // File is not in git yet
     if (result === "") {
+      // TODO: Add specific error handling for when the file is not in git
       result = new Date().toISOString();
     }
     
     // @ts-ignore
-    file.data.astro.frontmatter.lastModified = result;
+    file.data.astro.frontmatter.lastModified = new Date(result);
   };
 };
