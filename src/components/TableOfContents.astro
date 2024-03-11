@@ -1,12 +1,17 @@
 ---
-const { headers } = Astro.props;
+import type { MarkdownHeading } from 'astro';
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+const { headings } = Astro.props;
 ---
 
 <ul class="flex flex-col gap-4 mt-24">
   {
-    headers.map(({ slug, text }) => {
+    headings.map(({ slug, text }) => {
       return (
-        <li class="text-slate-400 hover:text-slate-900">
+        <li class="text-slate-400 hover:text-slate-f900">
           #<a href={`#${slug}`}>{text}</a>
         </li>
       );

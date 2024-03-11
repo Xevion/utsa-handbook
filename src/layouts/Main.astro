@@ -5,10 +5,13 @@ import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Sidebar from "@components/Sidebar.astro";
 import TableOfContents from "@components/TableOfContents.astro";
+import type { MarkdownHeading } from "astro";
 
-type Props = CollectionEntry<"handbook">["data"];
+type Props = Pick<CollectionEntry<"handbook">["data"], "title" | "description"> & {
+  headings: MarkdownHeading[];
+};
 
-const { title, description, pubDate, lastModified, headers } = Astro.props;
+const { title, description, headings } = Astro.props;
 const currentPage = new URL(Astro.request.url).pathname;
 ---
 
@@ -29,11 +32,11 @@ const currentPage = new URL(Astro.request.url).pathname;
         <slot />
       </main>
       {
-        headers && headers.length > 0 && (
+        headings && headings.length > 0 && (
           <div class="col-span-3 sticky top-0 h-screen flex">
             <nav aria-labelledby="grid-right">
               <div class="px-8">
-                <TableOfContents headers={headers} />
+                <TableOfContents headings={headings} />
               </div>
             </nav>
           </div>
