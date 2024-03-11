@@ -5,7 +5,7 @@ export const remarkModifiedTime: RemarkPlugins[number] = () => {
   return function (_, file) {
     const filepath = file.history[0];
     const command = `git log -1 --pretty="format:%cI" "${filepath}"`;
-    let result = execSync(command).toString();
+    let result = execSync(command).toString().trim();
 
     // File is not in git yet
     if (result === "") {
