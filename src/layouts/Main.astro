@@ -8,7 +8,7 @@ import TableOfContents from "@components/TableOfContents.astro";
 import type { MarkdownHeading } from "astro";
 
 type Props = Pick<CollectionEntry<"handbook">["data"], "title" | "description"> & {
-  headings: MarkdownHeading[];
+  headings?: MarkdownHeading[];
 };
 
 const { title, description, headings } = Astro.props;
