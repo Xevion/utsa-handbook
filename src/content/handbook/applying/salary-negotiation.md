@@ -18,8 +18,8 @@ To point out a couple basic things:
 - Larger companies may have more money, but they're much more rigid in their budgets and may not be open to salary negotiation.
 - Salary/rate is not the only thing you can negotiate. You can also negotiate for more vacation time, remote work, or other benefits.
   - But generally, you should negotiate for salary first, and then move on to other benefits if they're not flexible.
-- You should always negotiate. The worst that can happen is that they say no. The best that can happen is that you get more money.
-- Negotiations are not a one-time thing. But they're most impactful when you're first getting hired.
+- You should *always* try to negotiate. The worst that can happen is that they say no. The best that can happen is that you get more money.
+- Negotiations are not a one-time thing - but they're most impactful when you're first getting hired.
 - Negotiations are a complex, multi-step process that are completely dependent on the information available to you and them.
   - You should be prepared with research and reasoning for why you deserve more money.
   - You should try to acquire as much information as possible about the company's budget and the salary range for the position.
