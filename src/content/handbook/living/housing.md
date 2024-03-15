@@ -16,6 +16,12 @@ For example:
 - If you want safety, you should know that on-campus housing has access to rapid response campus police (UTSA PD, not SAPD).
   - This may be accessible to nearby off-campus housing as well, but I'm not sure.
 
+Some of the details below are persoal opinions and experiences, which will vary greatly from person to person. For example, some people will expect more from their first apartment and be unplesasantly surprised by the quality of dorms, while others will be happy to have parties nightly and care little for amenities and safety.
+
+Additionally, management and policy is ever shifting and may not be the same year to year.
+
+Throughout this, you should know one thing: like all companies, they are there to make money, and you are not a priority. A pretty young face making promises and showing you a nice model unit is not a guarantee of anything. Read your agreements carefully and be prepared to fight for your living conditions, especially if you're supposedly getting a "good deal".
+
 ## On-Campus Housing
 
 - Chaparral Village
@@ -51,6 +57,7 @@ The options below are not exhaustive, and focus primarily on the Main Campus (No
 - The Outpost
 - Avalon Place
 - Campus Edge
+- High View
 - The Reserve
   - Pro: Direct bus route to campus (engineering building).
   - Con: Drugs & Guns: My experience here has found many smokers, and hearing gunshots within and around the property is not uncommon.
