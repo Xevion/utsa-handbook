@@ -58,6 +58,8 @@ The options below are not exhaustive, and focus primarily on the Main Campus (No
 - Avalon Place
 - Campus Edge
 - High View
+- Hill Country Place
+- Maverick Creek Villas
 - The Reserve
   - Pro: Direct bus route to campus (engineering building).
   - Con: Drugs & Guns: My experience here has found many smokers, and hearing gunshots within and around the property is not uncommon.
