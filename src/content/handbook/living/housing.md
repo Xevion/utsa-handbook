@@ -68,5 +68,10 @@ The options below are not exhaustive, and focus primarily on the Main Campus (No
   - Con: Tricky leasing agreements, impossible to get out of without a replacement.
   - Con: You won't see the unit before you move in. You also won't know it's location.
 
+## TODO
+
+- Subleasing
+  - Subreddit, Facebook Group, Snapchat
+- Roommates
 
 [utsa-off-campus-housing]: https://www.utsa.edu/students/off-campus-housing/
